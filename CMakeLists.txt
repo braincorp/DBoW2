@@ -31,13 +31,16 @@ set(SOURCES
   src/QueryResults.cpp
   src/ScoringObject.cpp
   src/FORB.cpp
-  src/FBrief.cpp)
-
-find_package(OpenCV 4.0 QUIET)
+  src/FBrief.cpp
+  src/FSurf64.cpp)
+find_package(OpenCV 3.0 QUIET)
 if(NOT OpenCV_FOUND)
-  find_package(OpenCV 3.0 QUIET HINTS /opt/ros/kinetic)
+  find_package(OpenCV 4.0 QUIET)
   if(NOT OpenCV_FOUND)
-    message(FATAL_ERROR "OpenCV >= 3.0 not found")
+    find_package(OpenCV 3.0 QUIET HINTS /opt/ros/kinetic)
+    if(NOT OpenCV_FOUND)
+      message(FATAL_ERROR "OpenCV >= 3.0 not found")
+    endif()
   endif()
 endif()
 message(STATUS "Use OpenCV ${OpenCV_VERSION}")
