@@ -25,7 +25,8 @@ class FSurf64: protected FClass
 public:
 
   /// Descriptor type
-  typedef std::vector<float> TDescriptor;
+  //typedef std::vector<float> TDescriptor;
+  typedef cv::Mat TDescriptor;
   /// Pointer to a single descriptor
   typedef const TDescriptor *pDescriptor;
   /// Descriptor length

@@ -1523,7 +1523,8 @@ void TemplatedVocabulary<TDescriptor, F>::loadFromBinaryFile(const std::string& 
     m_nodes.at(n_id).parent = *ptr;
     m_nodes.at(m_nodes.at(n_id).parent).children.push_back(n_id);
     m_nodes.at(n_id).descriptor = cv::Mat(1, F::L, CV_8U);
-
+//    m_nodes.at(n_id).descriptor = cv::Mat(1, F::L, CV_32F);
+      
     memcpy(m_nodes.at(n_id).descriptor.data, buf + 4, F::L);
     m_nodes.at(n_id).weight = *reinterpret_cast<float*>(buf + 4 + F::L);
 
